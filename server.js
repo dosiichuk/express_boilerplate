@@ -10,24 +10,24 @@ app.set('view engine', '.hbs');
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.get('/user', (req, res, next) => {
-  res.render('login', { layout: false });
+  res.render('login');
   //   next();
 });
 
 app.get(['/', '/home'], (req, res) => {
-  res.render('index', { layout: false });
+  res.render('index');
 });
 
 app.get('/hello/:name', (req, res) => {
-  res.render('hello', { layout: false, name: req.params.name });
+  res.render('hello', { name: req.params.name, layout: 'dark' });
 });
 
 app.get('/about', (req, res) => {
-  res.render('about', { layout: false });
+  res.render('about');
 });
 
 app.use((req, res) => {
-  res.status(404).render('404.hbs', { layout: false });
+  res.status(404).render('404.hbs');
 });
 
 app.listen(8000, () => {
